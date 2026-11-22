@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIPE Labs — Build & Launch Your AI Product in 42 Days</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0b;
+  --bg-card: #111113;
+  --bg-card-hover: #18181b;
+  --border: #27272a;
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+  --text-dim: #71717a;
+  --accent: #6d5aff;
+  --accent-hover: #7f6eff;
+  --accent-glow: rgba(109, 90, 255, 0.15);
+  --green: #22c55e;
+  --red: #ef4444;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 0 60px;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.badge .dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-size: clamp(32px, 7vw, 56px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 .accent { color: var(--accent); }
+
+.hero .sub {
+  font-size: clamp(16px, 3vw, 19px);
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto 36px;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+.cta-btn:active { transform: translateY(0); }
+
+.cta-btn svg { width: 18px; height: 18px; }
+
+.hero-meta {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--text-dim);
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== SECTIONS ===== */
+section { padding: 60px 0; }
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+section h2 {
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+section .desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+
+/* ===== PROBLEM ===== */
+.problem {
+  border-top: 1px solid var(--border);
+}
+
+.problem-quote {
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.problem-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.problem-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.problem-item .x {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--red);
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 1px;
+}
+
+/* ===== SOLUTION ===== */
+.solution {
+  border-top: 1px solid var(--border);
+}
+
+.solution-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.solution-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+
+.solution-card:hover { border-color: var(--accent); }
+
+.solution-card .icon {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.solution-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.solution-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (min-width: 520px) {
+  .solution-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== TEAM ===== */
+.team {
+  border-top: 1px solid var(--border);
+}
+
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.team-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.team-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--accent-glow);
+  border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.team-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.team-info .role {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.team-info p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ===== VALUE STACK ===== */
+.stack {
+  border-top: 1px solid var(--border);
+}
+
+.stack-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stack-table tr { border-bottom: 1px solid var(--border); }
+.stack-table tr:last-child { border-bottom: none; }
+
+.stack-table td {
+  padding: 14px 0;
+  font-size: 15px;
+}
+
+.stack-table td:first-child {
+  color: var(--text);
+  padding-right: 16px;
+}
+
+.stack-table td:last-child {
+  color: var(--text-dim);
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.stack-table .check {
+  color: var(--green);
+  margin-right: 8px;
+}
+
+.stack-total {
+  margin-top: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stack-total .label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.stack-total .old-price {
+  font-size: 20px;
+  color: var(--text-dim);
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.stack-total .new-price {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.stack-total .savings {
+  font-size: 13px;
+  color: var(--green);
+  font-weight: 600;
+}
+
+/* ===== FORMAT ===== */
+.format {
+  border-top: 1px solid var(--border);
+}
+
+.rhythm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rhythm-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rhythm-day {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  min-width: 50px;
+}
+
+.rhythm-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.rhythm-desc strong { color: var(--text); font-weight: 600; }
+
+/* ===== TIMELINE ===== */
+.timeline {
+  border-top: 1px solid var(--border);
+}
+
+.timeline-items {
+  position: relative;
+  padding-left: 24px;
+}
+
+.timeline-items::before {
+  content: '';
+  position: absolute;
+  left: 5px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -24px; top: 8px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.timeline-item .week {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.timeline-item h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.timeline-item p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ===== SCARCITY ===== */
+.scarcity {
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.scarcity-box {
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  padding: 40px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scarcity-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.scarcity-box h2 {
+  font-size: clamp(24px, 5vw, 32px);
+  margin-bottom: 8px;
+}
+
+.scarcity-box .seats {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  margin: 16px 0;
+}
+
+.scarcity-box .seats span {
+  font-size: 20px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.scarcity-details {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 20px 0 28px;
+  flex-wrap: wrap;
+}
+
+.scarcity-detail {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.scarcity-detail strong {
+  color: var(--text);
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+/* ===== FAQ ===== */
+.faq {
+  border-top: 1px solid var(--border);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.faq-q h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.faq-q .arrow {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  color: var(--text-dim);
+  transition: transform 0.2s;
+}
+
+.faq-item.open .arrow { transform: rotate(180deg); }
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-a p {
+  padding-top: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+  text-align: center;
+}
+
+footer .logo {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+footer .logo .accent { color: var(--accent); }
+
+footer p {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+footer .links {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer .links a {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer .links a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="badge"><span class="dot"></span> Cohort 1 — Applications Open</div>
+    <h1>Build & Launch Your<br>AI Product in <span class="accent">42 Days</span></h1>
+    <p class="sub">Stop watching tutorials. Start shipping. Join 15–20 builders in a hands-on cohort led by people who build AI products for a living.</p>
+    <a href="#apply" class="cta-btn">Apply for Cohort 1 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <p class="hero-meta">Founding price: ₹4,999 · Only 15–20 seats · Starts January 2027</p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <p class="problem-quote">You've watched 47 AI tutorials.<br>You've built zero AI products.</p>
+    <div class="problem-items">
+      <div class="problem-item"><span class="x">✕</span> <span>Courses teach you concepts, not how to ship</span></div>
+      <div class="problem-item"><span class="x">✕</span> <span>You start projects but never finish them — no accountability, no deadline</span></div>
+      <div class="problem-item"><span class="x">✕</span> <span>You're stuck choosing between 200 frameworks instead of building one thing</span></div>
+      <div class="problem-item"><span class="x">✕</span> <span>No one around you is building with AI — you're figuring it out alone</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <div class="section-label">The Solution</div>
+    <h2>AIPE Labs is not a course.<br>It's a build lab.</h2>
+    <p class="desc">We don't sell content. We run a 42-day sprint where you build a real AI product — with live guidance from people who do this every day.</p>
+    <div class="solution-grid">
+      <div class="solution-card">
+        <div class="icon">⚡</div>
+        <h3>Build, Don't Watch</h3>
+        <p>Pre-recorded modules teach the concepts. Live sessions are for building, debugging, and shipping — not lectures.</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">🛠</div>
+        <h3>Real Products, Not Toys</h3>
+        <p>You pick a real problem. We help you architect, build, and deploy something people can actually use.</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">👥</div>
+        <h3>15–20 Builders Max</h3>
+        <p>Small cohort means real feedback, real code reviews, and no one gets lost in a crowd of 500.</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">💬</div>
+        <h3>Slack — Not Alone</h3>
+        <p>Daily async support, peer accountability, and direct access to the AIPE Labs team throughout the 42 days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="container">
+    <div class="section-label">Your Team</div>
+    <h2>Built by builders, not course sellers.</h2>
+    <p class="desc">The AIPE Labs team builds AI products professionally. This cohort is how we share the craft.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">H</div>
+        <div class="team-info">
+          <h3>Hitesh</h3>
+          <div class="role">Founder & AI Architect</div>
+          <p>Designs and builds AI-powered products end-to-end. Leads the architecture and live build sessions every Saturday.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">S</div>
+        <div class="team-info">
+          <h3>Sujay</h3>
+          <div class="role">Product Engineer</div>
+          <p>Ships full-stack AI products. Runs Wednesday office hours and handles day-to-day builder support on Slack.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">R</div>
+        <div class="team-info">
+          <h3>Ruthwik</h3>
+          <div class="role">Cloud & Automation</div>
+          <p>Handles deployment, infrastructure, and automation — so your product actually runs in production.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE STACK -->
+<section class="stack">
+  <div class="container">
+    <div class="section-label">What You Get</div>
+    <h2>₹40,000+ of value.<br>₹4,999 to get in.</h2>
+    <table class="stack-table">
+      <tr><td><span class="check">✓</span> 42-day structured AI product curriculum</td><td>₹15,000</td></tr>
+      <tr><td><span class="check">✓</span> Weekly live sessions with Hitesh + Sujay</td><td>₹10,000</td></tr>
+      <tr><td><span class="check">✓</span> Midweek office hours with Sujay</td><td>₹5,000</td></tr>
+      <tr><td><span class="check">✓</span> 42-day Slack access to the team</td><td>₹5,000</td></tr>
+      <tr><td><span class="check">✓</span> Templates, prompts & deployment playbooks</td><td>₹3,000</td></tr>
+      <tr><td><span class="check">✓</span> Founding member badge + lifetime alumni Slack</td><td>₹2,000</td></tr>
+    </table>
+    <div class="stack-total">
+      <div>
+        <div class="label">Total value</div>
+        <div class="old-price">₹40,000+</div>
+      </div>
+      <div style="text-align: right;">
+        <div class="label">Founding Cohort Price</div>
+        <div class="new-price">₹4,999</div>
+        <div class="savings">Save 87% — founding price only</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAT -->
+<section class="format">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2>Your week, every week.</h2>
+    <p class="desc">Same rhythm for 6 weeks. Predictable for you, manageable for us.</p>
+    <div class="rhythm-list">
+      <div class="rhythm-item">
+        <span class="rhythm-day">Mon</span>
+        <span class="rhythm-desc"><strong>New module drops</strong> — pre-recorded lesson + build assignment</span>
+      </div>
+      <div class="rhythm-item">
+        <span class="rhythm-day">Wed</span>
+        <span class="rhythm-desc"><strong>Office hours</strong> — live with Sujay, debug + check progress</span>
+      </div>
+      <div class="rhythm-item">
+        <span class="rhythm-day">Sat</span>
+        <span class="rhythm-desc"><strong>Live build session</strong> — Hitesh + Sujay, architecture + Q&A</span>
+      </div>
+      <div class="rhythm-item">
+        <span class="rhythm-day">Sun</span>
+        <span class="rhythm-desc"><strong>Submission deadline</strong> — ship your weekly build</span>
+      </div>
+      <div class="rhythm-item">
+        <span class="rhythm-day">Daily</span>
+        <span class="rhythm-desc"><strong>Slack</strong> — async Q&A, peer support, quick unblocks</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline">
+  <div class="container">
+    <div class="section-label">The 42-Day Arc</div>
+    <h2>From zero to shipped.</h2>
+    <div class="timeline-items">
+      <div class="timeline-item">
+        <div class="week">Weeks 1–2</div>
+        <h3>Foundation</h3>
+        <p>AI fundamentals, pick your product idea, set up your stack.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="week">Week 3</div>
+        <h3>Build Sprint 1</h3>
+        <p>Core product loop — the thing that makes it work.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="week">Week 4</div>
+        <h3>Build Sprint 2</h3>
+        <p>User-facing features, polish, edge cases.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="week">Week 5</div>
+        <h3>Launch Prep</h3>
+        <p>Deploy, landing page, onboard your first users.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="week">Week 6</div>
+        <h3>Launch Week</h3>
+        <p>Ship publicly, get feedback, present to the cohort.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCARCITY / CTA -->
+<section class="scarcity" id="apply">
+  <div class="container">
+    <div class="scarcity-box">
+      <div class="section-label">Limited Seats</div>
+      <h2>This is Cohort 1.<br>This price won't return.</h2>
+      <div class="seats">15–20 <span>seats</span></div>
+      <div class="scarcity-details">
+        <div class="scarcity-detail"><strong>₹4,999</strong>Founding price</div>
+        <div class="scarcity-detail"><strong>42 days</strong>Duration</div>
+        <div class="scarcity-detail"><strong>Jan 2027</strong>Starts</div>
+      </div>
+      <a href="#apply" class="cta-btn">Apply Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="hero-meta" style="margin-top: 16px;">Application-based enrollment · Reviewed within 48 hours</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2>Questions?</h2>
+    <div class="faq-list">
+      <div class="faq-item" onclick="this.classList.toggle('open'); var a=this.querySelector('.faq-a'); a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+        <div class="faq-q">
+          <h3>What skill level do I need?</h3>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a"><p>You should know basic programming (any language). We'll teach the AI and product engineering parts. If you can write a function and use an API, you're ready.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open'); var a=this.querySelector('.faq-a'); a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+        <div class="faq-q">
+          <h3>How much time do I need per week?</h3>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a"><p>Plan for 8–12 hours per week. That's roughly 1–2 hours on the module, 1.5 hours for each live session, and the rest on building your product.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open'); var a=this.querySelector('.faq-a'); a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+        <div class="faq-q">
+          <h3>What if I can't finish in 42 days?</h3>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a"><p>You keep lifetime access to the alumni Slack and all pre-recorded content. The 42-day structure is designed to get you to a shipped MVP, not a finished product — ship something small, then keep building.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open'); var a=this.querySelector('.faq-a'); a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+        <div class="faq-q">
+          <h3>Is there a refund policy?</h3>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a"><p>Full refund within the first 7 days if the cohort hasn't started. Once the cohort begins, we're committed to your 42-day journey together.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open'); var a=this.querySelector('.faq-a'); a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">
+        <div class="faq-q">
+          <h3>Why is it so cheap?</h3>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a"><p>This is Cohort 1. The founding price exists to fill the room with serious builders and get real case studies. The price goes up to ₹7,999+ from Cohort 2.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="logo"><span class="accent">AIPE</span> Labs</div>
+    <p>AI Product Engineering & Launch Lab</p>
+    <div class="links">
+      <a href="https://www.skool.com/ai-product-engineering-labs-1638" target="_blank" rel="noopener">Free Community</a>
+      <a href="https://x.com/aipe_labs" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
