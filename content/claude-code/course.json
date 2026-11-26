@@ -1,0 +1,7 @@
+{
+  "order": 1,
+  "title": "Claude Code Engineering",
+  "short": "Claude Code",
+  "description": "CLAUDE.md, the plan → build → test loop, hooks, subagents, skills and MCP, then deploy.",
+  "outcome": "A full-stack app deployed at a public URL, built with Claude Code, whose repo has a working CLAUDE.md, one custom subagent, one hook and one MCP server in use."
+}

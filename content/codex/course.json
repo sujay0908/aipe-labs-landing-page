@@ -1,0 +1,7 @@
+{
+  "order": 2,
+  "title": "Codex Engineering",
+  "short": "Codex",
+  "description": "Codex CLI, AGENTS.md, scoping agent-sized tasks, parallel cloud tasks and automated PR review.",
+  "outcome": "A feature live in production, delivered through merged PRs written by Codex agents you directed, with AGENTS.md and automated PR review switched on."
+}
