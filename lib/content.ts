@@ -23,7 +23,6 @@ const lessonFrontMatter = z.object({
   videoId: z.string().optional(),
   duration: z.string().optional(),
   summary: z.string().optional(),
-  draft: z.boolean().default(false),
 });
 
 export type Course = z.infer<typeof courseSchema> & { slug: string; lessons: LessonMeta[] };
