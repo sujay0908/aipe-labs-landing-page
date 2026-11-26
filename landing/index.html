@@ -4,7 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIPE Labs — Ship Your AI Product in 7 Days</title>
-<meta name="description" content="A live 7-day cohort for founders and indie hackers. Join and unlock four 7-day courses in the AIPE Labs LMS — ₹2,999 founding price.">
+<meta name="description" content="A live 7-day cohort where founders and indie hackers ship an AI product. Four 7-day courses unlock in the AIPE Labs LMS once you're in. ₹2,999 founding price, 20 seats, starts {{START}}.">
+<link rel="canonical" href="https://aipe-labs.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aipe-labs.vercel.app/">
+<meta property="og:site_name" content="AIPE Labs">
+<meta property="og:title" content="AIPE Labs Cohort 1: ship your AI product in 7 days">
+<meta property="og:description" content="A live 7-day cohort for founders and indie hackers. ₹2,999 founding price, 20 seats, starts {{START}}.">
+<meta property="og:image" content="https://aipe-labs.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AIPE Labs Cohort 1. Ship your AI product in 7 days. ₹2,999 founding price.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@aipe_labs">
+<meta name="twitter:title" content="AIPE Labs Cohort 1: ship your AI product in 7 days">
+<meta name="twitter:description" content="A live 7-day cohort for founders and indie hackers. ₹2,999 founding price, 20 seats, starts {{START}}.">
+<meta name="twitter:image" content="https://aipe-labs.vercel.app/og.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -156,6 +171,7 @@ section .desc { font-size: 16px; color: var(--text-muted); max-width: 580px; mar
 .stack-table td { padding: 14px 0; font-size: 15px; }
 .stack-table td:first-child { color: var(--text); padding-right: 16px; }
 .stack-table td:last-child { color: var(--text-dim); text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 14px; white-space: nowrap; }
+.stack-table td:only-child { color: var(--text); text-align: left; font-family: inherit; font-size: 15px; white-space: normal; }
 .stack-table .check { color: var(--green); margin-right: 8px; }
 .stack-table .free { color: var(--green); }
 .stack-total {
@@ -167,23 +183,6 @@ section .desc { font-size: 16px; color: var(--text-muted); max-width: 580px; mar
 .stack-total .new-price { font-size: 32px; font-weight: 900; color: var(--accent); letter-spacing: -0.02em; }
 .stack-total .savings { font-size: 13px; color: var(--green); font-weight: 600; }
 
-/* ===== PRICING ===== */
-.price-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-@media (min-width: 700px) { .price-grid { grid-template-columns: 1fr 1fr 1fr; } }
-.price-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; position: relative; }
-.price-card.hl { border-color: var(--accent); }
-.price-card .pop {
-  position: absolute; top: -11px; left: 24px; background: var(--accent); color: #fff;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px;
-}
-.price-card h3 { font-size: 15px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; }
-.price-card .amt { font-size: 34px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 2px; }
-.price-card .amt small { font-size: 14px; font-weight: 500; color: var(--text-dim); letter-spacing: 0; }
-.price-card .note { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; min-height: 20px; }
-.price-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
-.price-card li { font-size: 14px; color: var(--text-muted); display: flex; gap: 10px; }
-.price-card li .ok { color: var(--green); flex-shrink: 0; }
-.price-card .cta-btn { margin-top: auto; justify-content: center; width: 100%; font-size: 15px; padding: 12px 20px; }
 
 /* ===== RHYTHM ===== */
 .rhythm-list { display: flex; flex-direction: column; gap: 12px; }
@@ -229,12 +228,12 @@ footer .links a:hover { color: var(--accent); }
   <div class="container">
     <div class="badge"><span class="dot"></span> Cohort 1 — Applications open</div>
     <h1>Ship your AI product<br>in <span class="accent">7 days.</span></h1>
-    <p class="sub">A live 7-day cohort for founders and indie hackers. Join, and four 7-day courses on AI engineering, marketing and scaling unlock in your AIPE Labs dashboard.</p>
+    <p class="sub">A live 7-day cohort for founders and indie hackers. Once you're in, four 7-day courses on AI engineering, marketing and scaling unlock in the AIPE Labs LMS.</p>
     <div class="hero-ctas">
-      <a href="#apply" class="cta-btn">Apply for Cohort 1 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="/apply" class="cta-btn">Apply for Cohort 1 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <a href="#tracks" class="cta-btn ghost">See what's included</a>
     </div>
-    <p class="hero-meta">₹2,999 founding price · 4 courses included · Only 15–20 seats</p>
+    <p class="hero-meta">₹2,999 founding price · 4 courses included · 20 seats{{DEADLINE_NOTE}}</p>
   </div>
 </section>
 
@@ -309,11 +308,11 @@ footer .links a:hover { color: var(--accent); }
           <li>Auth, payments & observability</li>
           <li>Keeping cloud and AI costs under control</li>
         </ul>
-        <div class="track-outcome"><span>By day 7</span>A production-ready architecture for your product</div>
+        <div class="track-outcome"><span>By day 7</span>Your app running with real auth, test-mode payments, a background job on a queue, error monitoring and a spend alert</div>
       </div>
 
     </div>
-    <div class="lms-note"><span class="ico">🎓</span><span><strong>Your own learning dashboard.</strong> Once you sign up, you log in to the AIPE Labs LMS — all four courses are unlocked there, with lessons, build tasks, starter repos and your progress tracked day by day.</span></div>
+    <div class="lms-note"><span class="ico">🎓</span><span><strong>Your own learning dashboard.</strong> As soon as your payment goes through, you log in to the AIPE Labs LMS. All four courses are unlocked there, with a lesson and a build task for each day and your progress tracked as you go.</span></div>
   </div>
 </section>
 
@@ -324,10 +323,10 @@ footer .links a:hover { color: var(--accent); }
     <h2>Join once. Get everything.</h2>
     <p class="desc">One seat gets you the live cohort and all four courses.</p>
     <div class="rhythm-list">
-      <div class="rhythm-item"><span class="rhythm-day">Step 1</span><span class="rhythm-desc"><strong>Apply & join</strong> — we review applications within 48 hours</span></div>
-      <div class="rhythm-item"><span class="rhythm-day">Step 2</span><span class="rhythm-desc"><strong>Log in to the AIPE LMS</strong> — all four 7-day courses unlock instantly</span></div>
-      <div class="rhythm-item"><span class="rhythm-day">Step 3</span><span class="rhythm-desc"><strong>Ship with the cohort</strong> — 7 days of live sessions, Slack and a demo day</span></div>
-      <div class="rhythm-item"><span class="rhythm-day">Step 4</span><span class="rhythm-desc"><strong>Keep going</strong> — work through the other tracks at your own pace</span></div>
+      <div class="rhythm-item"><span class="rhythm-day">Step 1</span><span class="rhythm-desc"><strong>Apply</strong> — tell us what you'll build. We review applications within 48 hours</span></div>
+      <div class="rhythm-item"><span class="rhythm-day">Step 2</span><span class="rhythm-desc"><strong>Pay ₹2,999</strong> — accepted applicants get a payment link by email</span></div>
+      <div class="rhythm-item"><span class="rhythm-day">Step 3</span><span class="rhythm-desc"><strong>Log in to the AIPE LMS</strong> — all four 7-day courses unlock the moment your payment goes through</span></div>
+      <div class="rhythm-item"><span class="rhythm-day">Step 4</span><span class="rhythm-desc"><strong>Ship with the cohort</strong> — 7 days of live sessions, Slack and a demo day</span></div>
     </div>
   </div>
 </section>
@@ -371,19 +370,19 @@ footer .links a:hover { color: var(--accent); }
 <section class="stack bordered">
   <div class="container">
     <div class="section-label">What You Get</div>
-    <h2>₹20,000 of value.<br>₹2,999 to get in.</h2>
+    <h2>₹2,999 for Cohort 1.<br>₹7,999 from Cohort 2.</h2>
     <table class="stack-table">
-      <tr><td><span class="check">✓</span> All 4 × 7-day courses in the AIPE LMS</td><td>₹8,000</td></tr>
-      <tr><td><span class="check">✓</span> 3 live sessions — kickoff, mid-week build, demo day</td><td>₹6,000</td></tr>
-      <tr><td><span class="check">✓</span> Review of your shipped project by the team</td><td>₹3,000</td></tr>
-      <tr><td><span class="check">✓</span> Private cohort Slack with daily unblocks</td><td>₹2,000</td></tr>
-      <tr><td><span class="check">✓</span> Prompts, templates & deployment playbooks</td><td>₹1,000</td></tr>
-      <tr><td><span class="check">✓</span> Founding member badge + alumni community</td><td>₹1,000</td></tr>
+      <tr><td><span class="check">✓</span> All 4 × 7-day courses in the AIPE LMS</td></tr>
+      <tr><td><span class="check">✓</span> 3 live sessions — kickoff, mid-week build, demo day</td></tr>
+      <tr><td><span class="check">✓</span> Review of your shipped project by the team</td></tr>
+      <tr><td><span class="check">✓</span> Private cohort Slack with daily unblocks</td></tr>
+      <tr><td><span class="check">✓</span> Prompts, templates & deployment playbooks</td></tr>
+      <tr><td><span class="check">✓</span> Founding member badge + alumni community</td></tr>
     </table>
     <div class="stack-total">
       <div>
-        <div class="label">Total value</div>
-        <div class="old-price">₹20,000</div>
+        <div class="label">Cohort 2 price</div>
+        <div class="old-price">₹7,999</div>
       </div>
       <div style="text-align: right;">
         <div class="label">Founding Cohort Price</div>
@@ -416,15 +415,15 @@ footer .links a:hover { color: var(--accent); }
     <div class="scarcity-box">
       <div class="section-label">Founding Cohort</div>
       <h2>This is Cohort 1.<br>This price won't return.</h2>
-      <div class="seats">15–20 <span>seats</span></div>
+      <div class="seats">20 <span>seats</span></div>
       <div class="scarcity-details">
         <div class="scarcity-detail"><strong>₹2,999</strong>Founding price</div>
         <div class="scarcity-detail"><strong>7 days</strong>Live cohort</div>
         <div class="scarcity-detail"><strong>4 courses</strong>Included</div>
-        <div class="scarcity-detail"><strong>Jan 2027</strong>Starts</div>
+        <div class="scarcity-detail"><strong>{{START}}</strong>Starts</div>
       </div>
-      <a href="#apply" class="cta-btn">Apply Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <p class="hero-meta" style="margin-top: 16px;">Application-based · Reviewed within 48 hours</p>
+      <a href="/apply" class="cta-btn">Apply Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="hero-meta" style="margin-top: 16px;">Application-based · Reviewed within 48 hours{{DEADLINE_NOTE}}</p>
     </div>
   </div>
 </section>
@@ -437,7 +436,7 @@ footer .links a:hover { color: var(--accent); }
     <div class="faq-list">
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q"><h3>Where do I access the courses?</h3><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
-        <div class="faq-a"><p>Once you join, you get a login to the AIPE Labs LMS. All four 7-day courses are unlocked there — lessons, build tasks and starter repos — and your progress is tracked as you go.</p></div>
+        <div class="faq-a"><p>In the AIPE Labs LMS. Once your payment goes through, you log in with your email and all four 7-day courses are unlocked: a lesson and a build task for each day, with your progress tracked as you go.</p></div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q"><h3>What skill level do I need?</h3><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
@@ -449,7 +448,7 @@ footer .links a:hover { color: var(--accent); }
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q"><h3>Can I really ship something in 7 days?</h3><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
-        <div class="faq-a"><p>Yes — if it's small. The cohort is scoped to one concrete outcome: a deployed app, a shipped feature, a live landing page, or a production-ready architecture. Small and shipped beats big and unfinished.</p></div>
+        <div class="faq-a"><p>Yes — if it's small. The cohort is scoped to one concrete outcome: a deployed app, a shipped feature, a live landing page, or your app running with auth, payments, a queue and monitoring. Small and shipped beats big and unfinished.</p></div>
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q"><h3>Is there a refund policy?</h3><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
@@ -457,7 +456,7 @@ footer .links a:hover { color: var(--accent); }
       </div>
       <div class="faq-item" onclick="toggleFaq(this)">
         <div class="faq-q"><h3>Will the price go up?</h3><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div>
-        <div class="faq-a"><p>Yes. ₹2,999 is the founding price for the first cohort. It exists to fill the room with serious builders and get real case studies. Later cohorts will cost more.</p></div>
+        <div class="faq-a"><p>Yes. ₹2,999 is the founding price for the first cohort. It exists to fill the room with serious builders and get real case studies. From Cohort 2 the price is ₹7,999.</p></div>
       </div>
     </div>
   </div>
@@ -471,6 +470,7 @@ footer .links a:hover { color: var(--accent); }
     <div class="links">
       <a href="https://www.skool.com/ai-product-engineering-labs-1638" target="_blank" rel="noopener">Community</a>
       <a href="https://x.com/aipe_labs" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="/login">Member login</a>
     </div>
   </div>
 </footer>
