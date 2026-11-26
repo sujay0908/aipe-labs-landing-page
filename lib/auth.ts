@@ -28,12 +28,12 @@ async function canLogIn(email: string): Promise<boolean> {
 }
 
 /** Creates a one-time login token. Returns the URL; caller decides how to deliver it. */
-export async function createLoginLink(rawEmail: string, next = "/learn"): Promise<string> {
+export async function createLoginLink(rawEmail: string, next = "/learn", ttlMinutes = LINK_MINUTES): Promise<string> {
   const email = normalizeEmail(rawEmail);
   const token = newToken();
   await db()`
     insert into login_tokens (token_hash, email, expires_at)
-    values (${hashToken(token)}, ${email}, now() + ${`${LINK_MINUTES} minutes`}::interval)`;
+    values (${hashToken(token)}, ${email}, now() + ${`${ttlMinutes} minutes`}::interval)`;
   const url = new URL("/auth/verify", appUrl());
   url.searchParams.set("token", token);
   if (next !== "/learn") url.searchParams.set("next", next);
@@ -59,7 +59,12 @@ export async function consumeLoginToken(token: string): Promise<boolean> {
     where token_hash = ${hashToken(token)} and used_at is null and expires_at > now()
     returning email`;
   if (rows.length === 0) return false;
-  const email = rows[0].email as string;
+  await startSession(rows[0].email as string);
+  return true;
+}
+
+/** Logs the browser in as this email. Callers must have proven the person owns it. */
+export async function startSession(email: string): Promise<void> {
   const session = newToken();
   await db()`
     insert into sessions (token_hash, email, expires_at)
@@ -71,7 +76,6 @@ export async function consumeLoginToken(token: string): Promise<boolean> {
     path: "/",
     maxAge: SESSION_DAYS * 24 * 60 * 60,
   });
-  return true;
 }
 
 export async function endSession(): Promise<void> {
