@@ -1,0 +1,110 @@
+---
+title: "Setup, CLAUDE.md and context that sticks"
+order: 2
+type: text
+duration: "25 min read · 60 min build"
+summary: "Install Claude Code, get the app running, and write the CLAUDE.md that every later session starts from."
+---
+
+By the end of today you have Claude Code running in your project, the app running locally, and a `CLAUDE.md` that tells Claude how your project works. Every day after this builds on that file, so it's worth getting right.
+
+## 1. Install and log in
+
+You need Node.js 20 or newer and git.
+
+```bash
+node -v   # v20 or newer
+npm install -g @anthropic-ai/claude-code
+claude --version
+```
+
+Open a terminal in your project folder and start a session:
+
+```bash
+cd my-app
+claude
+```
+
+The first run asks you to log in. Use the account you'll use for the whole week.
+
+<Note title="No project yet?">
+Clone the cohort starter repo (Next.js + Postgres). It's linked in #announcements on Slack. Its README gets you from clone to running in under 15 minutes.
+</Note>
+
+## 2. Get the app running, with Claude doing the typing
+
+Don't start by writing code. Start by asking Claude to get the project running and explain what it found. In the session:
+
+```text
+Read this repo and get it running locally. Tell me:
+1. the command to start it
+2. the env vars it needs and which ones are missing
+3. anything that failed and how you fixed it
+```
+
+Watch what it does. Approve commands one at a time today, so you learn what it reaches for. You can loosen permissions later.
+
+## 3. What CLAUDE.md is for
+
+Claude starts every session with no memory of the last one. `CLAUDE.md`, at the root of the repo, is loaded into every session automatically. It's where you put what you'd otherwise repeat each time:
+
+| Put in CLAUDE.md | Leave out |
+|---|---|
+| How to run, test and lint | Things Claude can read from the code |
+| Stack and folder layout, in a few lines | Long docs (link to them instead) |
+| Conventions that aren't obvious | Secrets, keys, tokens |
+| "Always" and "never" rules you'd enforce in review | Today's to-do list |
+
+Short beats complete. A 40-line file that's true beats a 400-line file nobody updates.
+
+## 4. Write the first version
+
+Let Claude draft it, then edit it yourself:
+
+```text
+/init
+```
+
+`/init` scans the repo and writes a starting `CLAUDE.md`. Then cut it down. A good first version looks like this:
+
+```markdown title="CLAUDE.md"
+# my-app
+
+Next.js 16 (app router) + Postgres. Deployed on Vercel.
+
+## Commands
+- `npm run dev` — start on :3000
+- `npm test` — unit tests (must pass before any commit)
+- `npm run db:migrate` — apply SQL in db/migrations
+
+## Layout
+- app/ — routes; server components by default
+- lib/ — server-only helpers (db, auth, email)
+- db/migrations/ — numbered .sql files, never edit an applied one
+
+## Rules
+- TypeScript strict. No `any`.
+- All DB access through lib/db.ts using tagged SQL; never build SQL with string concatenation.
+- Ask before adding a dependency.
+```
+
+## 5. Check it sticks
+
+Start a fresh session (`/clear`) and ask something the file answers:
+
+```text
+How do I run the tests here, and what's the rule about dependencies?
+```
+
+If the answer is wrong or vague, the file is wrong or vague. Fix the file, not the prompt.
+
+<BuildTask>
+Get your project (or the starter repo) running locally with Claude Code, and commit a `CLAUDE.md` with your commands, layout and at least three rules.
+</BuildTask>
+
+<DoneWhen>
+- The app runs locally and you can open it in a browser
+- `CLAUDE.md` is committed at the repo root
+- In a fresh session, Claude answers "how do I run the tests?" correctly without reading other files
+- You posted your repo link and one line on what you'll ship by day 7 in #daily-ships
+</DoneWhen>

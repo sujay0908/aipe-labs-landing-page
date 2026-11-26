@@ -1,0 +1,7 @@
+{
+  "order": 4,
+  "title": "Scalable Engineering for Founders & Indie Hackers",
+  "short": "Scalable Engineering",
+  "description": "Architecture for a 1–3 person team, Postgres, auth, payments, queues, observability and cost control.",
+  "outcome": "Your app running with real auth, payments in test mode, one background job on a queue, error monitoring and a spend alert, plus a one-page architecture doc."
+}
