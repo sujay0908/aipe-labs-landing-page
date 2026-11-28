@@ -13,9 +13,25 @@ Stack: Next.js on Vercel, Postgres on Supabase (via Drizzle ORM), Auth.js with d
 ```bash
 npm install
 cp .env.example .env.local   # then fill in the values
-npm run db:migrate           # creates the tables in the database
-npm run dev
+npm run local:start          # checks setup, starts the server in the background
+npm run local:stop
 ```
+
+Next.js serves both the frontend (pages) and the backend (auth routes, server actions) from one process, so one server covers both. The database is the hosted Supabase project; its tables already exist (run `npm run db:migrate` only after a schema change).
+
+[scripts/local.mjs](scripts/local.mjs) works the same in PowerShell, Git Bash and macOS:
+
+| Command | What it does |
+|---|---|
+| `npm run local:start` | Checks `node_modules`, `.env.local` and the database connection, then starts the server and waits until it answers |
+| `npm run local:stop` | Stops the server and everything it started |
+| `npm run local:status` | Shows whether it's running |
+| `npm run local -- restart` | Stop, then start |
+| `npm run local -- logs` | Last 50 lines of the server log (`.local/server.log`) |
+
+Options: `--port 4000` to use another port (pass it to every command), and `--no-db-check` to start without a database (pages that need login won't work).
+
+For live logs in the terminal, use `npm run dev` instead.
 
 ## Environment variables
 
@@ -23,7 +39,7 @@ Set these in `.env.local` locally and in Vercel → Project → Settings → Env
 
 | Variable | What it is |
 |---|---|
-| `DATABASE_URL` | Supabase Postgres connection string: the **transaction pooler** (port 6543) |
+| `DATABASE_URL` | Supabase project `aipe-labs` (ref `uuntgccqhnpevizfynez`, Mumbai): Connect → **Transaction pooler** string (port 6543) |
 | `AUTH_SECRET` | Random secret for signing sessions. Generate with `npx auth secret` |
 | `AUTH_RESEND_KEY` | Resend API key, used to send login emails |
 | `EMAIL_FROM` | Sender, e.g. `AIPE Labs <login@yourdomain.com>`. The domain must be verified in Resend |
