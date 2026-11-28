@@ -17,7 +17,8 @@ const STATE_DIR = path.join(ROOT, ".local");
 const PID_FILE = path.join(STATE_DIR, "server.pid");
 const LOG_FILE = path.join(STATE_DIR, "server.log");
 const ENV_FILE = path.join(ROOT, ".env.local");
-const REQUIRED_ENV = ["DATABASE_URL", "AUTH_SECRET", "AUTH_RESEND_KEY", "EMAIL_FROM"];
+const REQUIRED_ENV = ["DATABASE_URL", "AUTH_SECRET"];
+const EMAIL_ENV = ["AUTH_RESEND_KEY", "EMAIL_FROM"]; // only login emails need these
 
 const args = process.argv.slice(2);
 const command = args[0] ?? "help";
@@ -82,7 +83,9 @@ function checkEnv() {
   process.loadEnvFile(ENV_FILE);
   const missing = REQUIRED_ENV.filter((k) => !process.env[k]);
   if (missing.length) fail(`.env.local has no value for: ${missing.join(", ")}`);
-  ok(".env.local has all required variables");
+  ok(".env.local has DATABASE_URL and AUTH_SECRET");
+  const noEmail = EMAIL_ENV.filter((k) => !process.env[k]);
+  if (noEmail.length) warn(`no ${noEmail.join(", ")}: the site runs, but login emails can't be sent`);
 }
 
 async function checkDatabase() {
